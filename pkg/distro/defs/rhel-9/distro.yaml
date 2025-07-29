@@ -1136,6 +1136,7 @@ image_types:
                   - "subscription-manager-cockpit"
 
   qcow2: &qcow2
+    name_aliases: ["guest-image"]
     filename: "disk.qcow2"
     mime_type: "application/x-qemu-disk"
     # note that unlike fedora rhel does not use the environment.KVM
@@ -1248,6 +1249,7 @@ image_types:
 
   "vagrant-libvirt": &vagrant_libvirt
     <<: *qcow2
+    name_aliases: []
     filename: "vagrant-libvirt.box"
     mime_type: "application/x-tar"
     bootable: true
@@ -1288,12 +1290,14 @@ image_types:
 
   oci:
     <<: *qcow2
+    name_aliases: []
     platforms:
       - <<: *x86_64_bios_platform
         image_format: "qcow2"
 
   vhd: &vhd
     <<: *qcow2
+    name_aliases: []
     filename: "disk.vhd"
     mime_type: "application/x-vhd"
     default_size: 4_294_967_296  # 4 * datasizes.GibiByte
@@ -2326,6 +2330,7 @@ image_types:
 
   openstack:
     <<: *qcow2
+    name_aliases: []
     default_size: 4_294_967_296  # 4 * datasizes.GibiByte
     platforms:
       - <<: *x86_64_bios_platform
